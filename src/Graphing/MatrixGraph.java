@@ -1,9 +1,6 @@
 package Graphing;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by DragonFire168 on 11/20/15.
@@ -14,6 +11,7 @@ public class MatrixGraph implements Graph{
     private List<Edge> edgelist;
     private int time;
     private int [] critpath;
+    private HashSet<Integer> critset;
 
     public MatrixGraph() {
         graph = null;
@@ -30,7 +28,7 @@ public class MatrixGraph implements Graph{
     }
 
     @Override
-    public int Weight(int v1, int v2) {
+    public int weight(int v1, int v2) {
         return graph[v1][v2];
     }
 
@@ -84,12 +82,22 @@ public class MatrixGraph implements Graph{
         }
         critpath[critpath.length - 1] = criticalPath.get(criticalPath.size() - 1).v2; //Assign finishing node
 
+        critset = new HashSet<>();
+        for (int v : critpath) {
+            critset.add(v);
+        }
+
         time = Edge.sumEdges(criticalPath); //Get the minimum time it will take to complete the network
     }
 
     @Override
     public int[] getCriticalPath() {
         return critpath;
+    }
+
+    @Override
+    public Set<Integer> getCriticalSet() {
+        return critset;
     }
 
     @Override

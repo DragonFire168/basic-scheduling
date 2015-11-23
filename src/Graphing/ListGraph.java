@@ -1,11 +1,13 @@
 package Graphing;
 
+import java.util.Set;
+
 /**
  * Created by phillip on 11/21/15.
  */
 public class ListGraph  implements Graph{
     @Override
-    public int Weight(int v1, int v2) {
+    public int weight(int v1, int v2) {
         return 0;
     }
 
@@ -27,6 +29,11 @@ public class ListGraph  implements Graph{
     @Override
     public int[] getCriticalPath() {
         return new int[0];
+    }
+
+    @Override
+    public Set<Integer> getCriticalSet() {
+        return null;
     }
 
     @Override
