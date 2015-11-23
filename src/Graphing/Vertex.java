@@ -135,4 +135,16 @@ public class Vertex {
         }
         return l - a - w; //Return the calculated float time
     }
+
+    public Set<Integer> getBackVertices () {
+        return new HashSet<>(backNodes);
+    }
+
+    public Set<Integer> getFrontVertices() {
+        return new HashSet<>(frontNodes);
+    }
+
+    public int getValue() {
+        return value;
+    }
 }

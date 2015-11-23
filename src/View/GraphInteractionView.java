@@ -1,6 +1,7 @@
 package View;
 
 import Graphing.Graph;
+import Graphing.Vertex;
 
 import java.io.PrintStream;
 import java.util.HashMap;
@@ -58,6 +59,13 @@ public class GraphInteractionView {
                 stop = true;
             }
         }, "Quits the program"));
+
+        menu.put("vertx", new MenuEntry(new Runnable() {
+            @Override
+            public void run() {
+                openVertex();
+            }
+        }, "Open a vertex to view its properties"));
     }
 
     public void beginInteraction() {
@@ -95,7 +103,24 @@ public class GraphInteractionView {
         }
     }
 
+    private int askVertex() {
+        int ret;
+        while (true) {
+            out.print("Please enter a vertex: ");
+            ret = in.nextInt();
+            try {
+                g.getVertex(ret);
+                return ret;
+            } catch (IndexOutOfBoundsException e) {
+                out.print("Not a valid vertex");
+            }
+        }
+    }
+
     public void openVertex() {
-        out.println("This hasn't been implemented yet");
+        Vertex v = g.getVertex(askVertex());
+        VertexView view = new VertexView(g, v);
+        out.println();
+        view.beginInteraction();
     }
 }
