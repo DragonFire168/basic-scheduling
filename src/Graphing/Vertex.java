@@ -108,4 +108,25 @@ public class Vertex {
         return graph.getCriticalSet().contains(value)?0:mustLeave()-arrival();
     }
 
+    public int floatTime(int v2) {
+        if (!(backNodes.contains(v2) || frontNodes.contains(v2))) {
+            throw new IllegalArgumentException("v" + v2 + " is not adjacent to v" + value + ". Float time cannot be calculated.");
+        }
+        Set<Integer> crtiset = graph.getCriticalSet();
+        if (crtiset.contains(value) && crtiset.contains(v2)) {
+            return 0; //If both vertices, thus the edge, is on the critical path, we know the float time is zero
+        }
+        Vertex other = graph.getVertex(v2); //Get the vertex object for the other end
+        int a=0, l=0, w=0; //Declare the variable need for the calculations
+        if (frontNodes.contains(v2)) { //Determine which vertex is in front, and set the variables accordingly
+            a = arrival();
+            l = other.mustLeave();
+            w = graph.weight(value,v2);
+        } else {
+            a = other.arrival();
+            l = mustLeave();
+            w = graph.weight(v2, value);
+        }
+        return l - a - w; //Return the calculated float time
+    }
 }
