@@ -103,4 +103,9 @@ public class Vertex {
         return graph.minCompletionWeight() - finish;
     }
 
+    public int slackTime() {
+        //We check to see if we're on the critical path to avoid the relatively expensive path finding methods
+        return graph.getCriticalSet().contains(value)?0:mustLeave()-arrival();
+    }
+
 }
