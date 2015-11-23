@@ -46,7 +46,7 @@ public class Vertex {
                 throw new CycleException("A cycle was detected when traversing from v" + value + " to v" + v);
             }
             ArrayList<Edge> newPath = new ArrayList<>();
-            Edge e = new Edge(v, this.value, graph.Weight(v, value));
+            Edge e = new Edge(v, this.value, graph.weight(v, value));
             newPath.add(e);
             Vertex vert = graph.getVertex(v);
             //noinspection unchecked
@@ -79,7 +79,7 @@ public class Vertex {
                 throw new CycleException("A cycle was detected when traversing from v" + value + " to v" + v);
             }
             ArrayList<Edge> newPath = new ArrayList<>();
-            Edge e = new Edge(this.value, v, graph.Weight(value, v));
+            Edge e = new Edge(this.value, v, graph.weight(value, v));
             newPath.add(e);
             Vertex vert = graph.getVertex(v);
             //noinspection unchecked

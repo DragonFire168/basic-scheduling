@@ -4,6 +4,8 @@ package Graphing;
  * Created by DragonFire168 on 11/18/15.
  */
 
+import java.util.Set;
+
 /**
  * A graph for a scheduling network, allows for the retrieval of vertices and weights from the network.
  */
@@ -16,7 +18,7 @@ public interface Graph {
      * @param v2 The value of the second vertex
      * @return The weight of the edge
      */
-    int Weight(int v1, int v2);
+    int weight(int v1, int v2);
 
     /**
      * Gets a vertex object from the graph, throws an IllegalStateException if the graph has not been compiled yet.
@@ -43,6 +45,13 @@ public interface Graph {
      * @return The vertices along the critical path from start to finish
      */
     int[] getCriticalPath();
+
+    /**
+     * Returns a set of the values to the vertices that are along the critical path.
+     *
+     * @return Set of vertices along the critical path
+     */
+    Set<Integer> getCriticalSet();
 
     /**
      * The minimum amount of time(weight) it will take to complete the network from start to finish.
