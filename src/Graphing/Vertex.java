@@ -1,9 +1,6 @@
 package Graphing;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by DragonFire168 on 11/18/15.
@@ -13,6 +10,7 @@ public class Vertex {
     protected Graph graph;
     protected int value;
     protected Set<Integer> backNodes, frontNodes;
+    protected HashMap<String, Integer> cache;
 
     /**
      * A graph vertex
@@ -26,6 +24,7 @@ public class Vertex {
         this.graph = graph;
         backNodes = bV;
         frontNodes = fV;
+        cache = new HashMap<>(4);
     }
 
     public List<Edge> getMaxPathToStart() {
@@ -95,12 +94,19 @@ public class Vertex {
     }
 
     public int arrival() {
-        return Edge.sumEdges(getMaxPathToStart());
+        if (!cache.containsKey("arrive")) {
+            cache.put("arrive", Edge.sumEdges(getMaxPathToStart()));
+        }
+        return cache.get("arrive");
     }
 
     public int mustLeave() {
-        int finish = Edge.sumEdges(getMaxPathToFinish());
-        return graph.minCompletionWeight() - finish;
+        if (!cache.containsKey("leave")) {
+            int finish = Edge.sumEdges(getMaxPathToFinish());
+            cache.put("leave", graph.minCompletionWeight() - finish)
+        }
+
+        return cache.get("leave");
     }
 
     public int slackTime() {
