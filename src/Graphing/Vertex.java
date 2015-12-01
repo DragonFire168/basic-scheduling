@@ -103,7 +103,7 @@ public class Vertex {
     public int mustLeave() {
         if (!cache.containsKey("leave")) {
             int finish = Edge.sumEdges(getMaxPathToFinish());
-            cache.put("leave", graph.minCompletionWeight() - finish)
+            cache.put("leave", graph.minCompletionWeight() - finish);
         }
 
         return cache.get("leave");

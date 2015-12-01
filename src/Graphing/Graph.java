@@ -59,4 +59,18 @@ public interface Graph {
      * @return Minimum completion weight
      */
     int minCompletionWeight();
+
+    /**
+     * Gets the number of edges in the graph
+     *
+     * @return Number of edges
+     */
+    int getNumberOfEdges();
+
+    /**
+     * Gets the number of nodes in the graph
+     *
+     * @return Number of vertices
+     */
+    int getNumberOfVertices();
 }
