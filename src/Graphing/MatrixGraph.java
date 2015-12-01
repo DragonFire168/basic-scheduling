@@ -38,9 +38,10 @@ public class MatrixGraph implements Graph{
         HashSet<Integer> front = new HashSet<>();
         HashSet<Integer> back = new HashSet<>();
 
-        for (int v : adjverts) {
-            if (v>0) {front.add(v);}
-            if (v<0) {back.add(v);}
+        for (int i = 0; i < adjverts.length; i++) {
+            int v = adjverts[i];
+            if (v<0) {back.add(i);}
+            if (v>0) {front.add(i);}
         }
         return new Vertex(v1, this, back, front);
     }

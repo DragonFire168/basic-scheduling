@@ -16,7 +16,7 @@ public class MenuEntry {
 
     public static void printMenuMap(Map<String, MenuEntry> menu) {
         for (String key : menu.keySet()) {
-            System.out.printf("%s: %s", key, menu.get(key));
+            System.out.printf("%s: %s\n", key, menu.get(key).description);
         }
     }
 }

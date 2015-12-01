@@ -22,6 +22,7 @@ public class GraphInteractionView {
         this.g = g;
         this.in = new Scanner(System.in);
         this.out = System.out;
+        menu = new HashMap<>();
         /*
         Settled on using anonymous runnable classes from trying to find a way to put a function in the list, came upon
         this idea from a cursory search on delegates and first class functions in java
