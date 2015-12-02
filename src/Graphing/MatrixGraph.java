@@ -104,4 +104,14 @@ public class MatrixGraph implements Graph{
     public int minCompletionWeight() {
         return time;
     }
+
+    @Override
+    public int getNumberOfEdges() {
+        return edgelist.size();
+    }
+
+    @Override
+    public int getNumberOfVertices() {
+        return graph.length;
+    }
 }

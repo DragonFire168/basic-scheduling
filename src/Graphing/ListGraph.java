@@ -40,4 +40,14 @@ public class ListGraph  implements Graph{
     public int minCompletionWeight() {
         return 0;
     }
+
+    @Override
+    public int getNumberOfEdges() {
+        return 0;
+    }
+
+    @Override
+    public int getNumberOfVertices() {
+        return 0;
+    }
 }
